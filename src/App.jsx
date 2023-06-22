@@ -1,20 +1,28 @@
-// Write your Color component here
+import React, { useState } from "react";
 
-const Color = (props) => {
-  return <div className={props.color}></div>
-}
+const ColorSquare = ({ color, setSelectedColor }) => {
+  return (
+    <div
+      className={color}
+      onClick={() => setSelectedColor(color)}
+      style={{ backgroundColor: color }}
+    ></div>
+  );
+};
 
 const App = () => {
+  const [selectedColor, setSelectedColor] = useState("");
+
   return (
     <div id="container">
       <div id="navbar">
         <div>Currently selected: </div>
-        <div className="red">red</div>
+        <div className={selectedColor}>{selectedColor}</div>
       </div>
       <div id="colors-list">
-         <Color color="red"/>
-         <Color color="blue"/>
-  <Color color="green"/>
+        <ColorSquare color="red" setSelectedColor={setSelectedColor} />
+        <ColorSquare color="blue" setSelectedColor={setSelectedColor} />
+        <ColorSquare color="green" setSelectedColor={setSelectedColor} />
       </div>
     </div>
   );
